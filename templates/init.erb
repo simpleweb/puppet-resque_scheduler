@@ -18,7 +18,7 @@ RETVAL=0
 case "$1" in
   start)
     log_daemon_msg "Starting resque-scheduler server" "resque_scheduler_<%= @name %>"
-    RAILS_ENV="<%= @rack_env %>" PIDFILE="<%= @pidfile %>" BACKGROUND=yes LOGFILE="<%= @log_path %>" APP_NAME=<%= @name %> start-stop-daemon --start --quiet --oknodo --user "${USER:-root}" --pidfile $PIDFILE --chdir $APPROOT --startas $DAEMON -- $DAEMON_OPTS
+    RAILS_ENV="<%= @rack_env %>" PIDFILE="<%= @pidfile %>" BACKGROUND=yes LOGFILE="<%= @_log_path %>" APP_NAME=<%= @name %> start-stop-daemon --start --quiet --oknodo --user "${USER:-root}" --pidfile $PIDFILE --chdir $APPROOT --startas $DAEMON -- $DAEMON_OPTS
     RETVAL=$?
     log_end_msg $RETVAL
     ;;
