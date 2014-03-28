@@ -9,10 +9,11 @@ DAEMON_OPTS="<%= @daemon_opts %>"
 # running `bundle exec` so that it can locate the Gemfile.
 APPROOT="<%= @app_root %>"
 
-NAME="<%= @name %>"
-
 ENV="<%= @rack_env %>"
 PIDFILE="<%= @pidfile %>"
+BACKGROUND=yes
+LOGFILE="<%= @log_path %>"
+APP_NAME=<%= @name %>
 
 export RAILS_ENV="$ENV"
 export RACK_ENV="$ENV"

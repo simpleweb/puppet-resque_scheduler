@@ -35,7 +35,6 @@ define resque_scheduler::instance (
   $group,
   $app_root,
   $bundler_executable = 'bundle',
-  $bin_path = 'resque-scheduler',
   $rack_env = 'production',
   $log_path = undef,
 ) {
@@ -46,9 +45,8 @@ define resque_scheduler::instance (
     $_log_path = "${app_root}/log/resque_scheduler_${name}.log"
   }
 
-  $options     = "--background --app-name ${name} --environment ${rack_env} --logfile ${log_path} --pidfile ${pidfile}"
   $daemon      = $bundler_executable
-  $daemon_opts = "exec ${bin_path} ${options}"
+  $daemon_opts = "exec rake resque:scheduler"
 
   service { "resque_scheduler_${name}":
     ensure     => running,
